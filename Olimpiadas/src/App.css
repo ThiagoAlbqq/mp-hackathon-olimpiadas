@@ -1,0 +1,27 @@
+#root {
+  min-height: 100vh;
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.container-list {
+  height: calc(100% - 80px);
+}
+
+.container-sports > div {
+  transition: transform 0.3s ease;
+}
+
+.container-sports > div:hover {
+  transform: scale(1.03);
+}
+
+.container-sports > div:hover ~ div {
+  transform: scale(0.99);
+}
