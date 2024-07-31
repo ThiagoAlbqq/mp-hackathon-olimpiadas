@@ -74,36 +74,77 @@ export default function Medalhas() {
       <p className="text-center mt-20 text-red-500">Error: {error.message}</p>
     );
 
+  // Split data into first three items and the rest
+  const firstThree = data.slice(0, 3);
+  const rest = data.slice(3);
+
   return (
     <div className="flex flex-col items-center p-10">
       <h1 className="text-2xl font-bold mb-8 text-white">Medalhas por País</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-[1200px] w-full">
-        {data.map((country) => (
-          <div
-            key={country.id}
-            className="bg-zinc-800 text-white p-6 rounded-lg shadow-lg flex flex-col items-center"
-          >
-            <img
-              src={country.flag_url}
-              alt={`${country.name} flag`}
-              className="w-24 h-16 object-cover mb-4"
-            />
-            <h2 className="text-xl font-semibold mb-2">{country.name}</h2>
-            <p className="text-sm mb-2">Rank: {country.rank}</p>
-            <p className="text-sm mb-2">Total Medals: {country.total_medals}</p>
-            <div className="flex gap-2 mt-2">
-              <span className="bg-yellow-500 text-black px-2 py-1 rounded-full text-sm">
-                Gold: {country.gold_medals}
-              </span>
-              <span className="bg-gray-400 text-black px-2 py-1 rounded-full text-sm">
-                Silver: {country.silver_medals}
-              </span>
-              <span className="bg-orange-600 text-white px-2 py-1 rounded-full text-sm">
-                Bronze: {country.bronze_medals}
-              </span>
+      <div className="grid grid-cols-1 gap-6 max-w-[1200px] w-full">
+        {/* First row with the first three countries */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-6">
+          {firstThree.map((country) => (
+            <div
+              key={country.id}
+              className="bg-zinc-800 text-white p-6 rounded-lg shadow-lg flex flex-col items-center"
+            >
+              <img
+                src={country.flag_url}
+                alt={`${country.name} flag`}
+                className="w-24 h-16 object-cover mb-4"
+              />
+              <h2 className="text-xl font-semibold mb-2">{country.name}</h2>
+              <p className="text-sm mb-2">Rank: {country.rank}</p>
+              <p className="text-sm mb-2">
+                Total Medals: {country.total_medals}
+              </p>
+              <div className="flex gap-2 mt-2">
+                <span className="bg-yellow-500 text-white w-8 h-8 flex items-center justify-center rounded-full text-sm">
+                  {country.gold_medals}
+                </span>
+                <span className="bg-gray-400 text-white w-8 h-8 flex items-center justify-center rounded-full text-sm">
+                  {country.silver_medals}
+                </span>
+                <span className="bg-orange-600 text-white w-8 h-8 flex items-center justify-center rounded-full text-sm">
+                  {country.bronze_medals}
+                </span>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+
+        {/* Remaining countries */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {rest.map((country) => (
+            <div
+              key={country.id}
+              className="bg-zinc-800 text-white p-6 rounded-lg shadow-lg flex flex-col items-center"
+            >
+              <img
+                src={country.flag_url}
+                alt={`${country.name} flag`}
+                className="w-24 h-16 object-cover mb-4"
+              />
+              <h2 className="text-xl font-semibold mb-2">{country.name}</h2>
+              <p className="text-sm mb-2">Rank: {country.rank}</p>
+              <p className="text-sm mb-2">
+                Total Medals: {country.total_medals}
+              </p>
+              <div className="flex gap-2 mt-2">
+                <span className="bg-yellow-500 text-white w-8 h-8 flex items-center justify-center rounded-full text-sm">
+                  {country.gold_medals}
+                </span>
+                <span className="bg-gray-400 text-white w-8 h-8 flex items-center justify-center rounded-full text-sm">
+                  {country.silver_medals}
+                </span>
+                <span className="bg-orange-600 text-white w-8 h-8 flex items-center justify-center rounded-full text-sm">
+                  {country.bronze_medals}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

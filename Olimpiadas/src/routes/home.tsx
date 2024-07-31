@@ -37,7 +37,7 @@ export default function Home() {
   if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <div className="flex flex-col justify-between container-list items-center p-20">
+    <div className="flex flex-col justify-between container-list items-center p-20 h-full">
       <div className="max-w-[1400px]">
         <div className="space-y-10">
           <div className="flex flex-wrap gap-4 items-center justify-center text-center container-sports">
